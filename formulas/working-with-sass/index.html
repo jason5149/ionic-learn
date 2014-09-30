@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <meta charset='utf-8'>
+    <title>Writing a Sass Theme | Formulas | Learn Ionic</title>
+    <link href='/css/site.css' rel='stylesheet'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css' rel='stylesheet'>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-44023830-6', 'ionicframework.com');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body class='full-page no-js'>
+    <script>
+      document.body.classList.remove('no-js');
+    </script>
+    <div class='container'>
+      <div class='row'>
+        <div class='side-nav'>
+          <div class='logo'>
+            <a href='/'>
+              <img alt='Learn Ionic Framework' height='43' src='/img/learn-ionicframework@2x.png' width='194'>
+            </a>
+          </div>
+          <nav>
+            <ul>
+              <li>
+                <a href='/videos/'>
+                  <i class='ion-videos'></i>
+                  <p>Videos</p>
+                </a>
+              </li>
+              <li>
+                <a class='active' href='/formulas/'>
+                  <i class='ion-formulas'></i>
+                  <p>Formulas</p>
+                </a>
+              </li>
+              <li>
+                <a href='/talks/'>
+                  <i class='ion-talks'></i>
+                  <p>Talks</p>
+                </a>
+              </li>
+              <li>
+                <a href='/resources/'>
+                  <i class='ion-resources'></i>
+                  <p>Resources</p>
+                </a>
+              </li>
+            </ul>
+            <footer>
+              <ul>
+                <li>
+                  <a href='https://github.com/driftyco/ionic-learn/issues/new' target='_new'>
+                    <i class='ion-suggestions'></i>
+                    <p>Suggest a Topic</p>
+                  </a>
+                </li>
+                <li>
+                  <a href='http://forum.ionicframework.com/' target='_new'>
+                    <i class='ion-forum'></i>
+                    <p>Forums</p>
+                  </a>
+                </li>
+                <li>
+                  <a href='https://github.com/driftyco/ionic' target='_new'>
+                    <i class='ion-github'></i>
+                    <p>Github</p>
+                  </a>
+                </li>
+                <li>
+                  <a href='https://twitter.com/ionicframework' target='_new'>
+                    <i class='ion-twitter'></i>
+                    <p>Twitter</p>
+                  </a>
+                </li>
+                <li>
+                  <a href='https://plus.google.com/+Ionicframework/posts' target='_new'>
+                    <i class='ion-googleplus'></i>
+                    <p>Plus</p>
+                  </a>
+                </li>
+              </ul>
+            </footer>
+            <form action='http://codiqa.createsend.com/t/t/s/thodi/' class='email-digest' method='post'>
+              <label for='cm-thodi-thodi'>
+                <p>Sign up for the weekly Learn Digest!</p>
+              </label>
+              <div class='digest-wrapper'>
+                <input name='cm-thodi-thodi' placeholder='Email address' required type='email'>
+                <input type='submit' value='Go'>
+              </div>
+            </form>
+            <div class='email-digest-success'>
+              <p>Thanks for signing up. Every Friday you'll get an update on all of the new and exciting lessons on Learn Ionic!</p>
+            </div>
+          </nav>
+        </div>
+        <div class='main-pane'>
+          <div class='content formula'>
+            <nav>
+              <a class='left' href='/formulas/'>
+                <i class='ion-chevron-left'></i>
+                <span style='margin-left:0px;'>All Formulas</span>
+              </a>
+            </nav>
+            <article>
+              <header>
+                <h1>Writing a Sass Theme</h1>
+                <div class='byline'>
+                  <img src='/img/authors/mike-hartington.png'>
+                  <span class='author'>
+                    Written by
+                    <a href='https://twitter.com/mhartington' target='_new'>Mike Hartington</a>
+                  </span>
+                  <time></time>
+                </div>
+                <div class='social-buttons'>
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-via="ionicframework" data-related="ionicframework">Tweet</a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
+              </header>
+              <h2 id="sass-customization">Sass Customization</h2>
+              
+              <p>In my last video, I went over the steps on how to set up Sass for an Ionic project. Now, let’s look at how you can override the variables in Ionic to make the colors your own.</p>
+              
+              <h2 id="setup">Setup</h2>
+              
+              <p>Let’s start a new Ionic project using Sass.</p>
+              
+              <div><div class="CodeRay">
+                <div class="code"><pre>$ ionic start CustomSass blank &amp;&amp; cd CustomSass&#x000A;$ ionic setup sass</pre></div>
+              </div>
+              </div>
+              
+              <p>Now that we have Sass’s dependencies installed, let’s open up <code>ionic.app.scss</code> in the scss folder. By default, Ionic comes with these nine Sass variables:</p>
+              
+              <div><div class="CodeRay">
+                <div class="code"><pre>$light:                           #fff !default;&#x000A;$stable:                          #f8f8f8 !default;&#x000A;$positive:                        #4a87ee !default;&#x000A;$calm:                            #43cee6 !default;&#x000A;$balanced:                        #66cc33 !default;&#x000A;$energized:                       #f0b840 !default;&#x000A;$assertive:                       #ef4e3a !default;&#x000A;$royal:                           #8a6de9 !default;&#x000A;$dark:                            #444 !default;</pre></div>
+              </div>
+              </div>
+              
+              <p>With these colors, you can completely redesign an app by simply changing the color. Let’s do that.</p>
+              
+              <p>Open your <code>index.html</code>, and let’s change the markup to include a sample of Ionic’s components.</p>
+              
+              <div><div class="CodeRay">
+                <div class="code"><pre>  <span class="tag">&lt;ion-pane&gt;</span>&#x000A;    <span class="tag">&lt;ion-header-bar</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bar-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;      <span class="tag">&lt;h1</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>myNetwork<span class="tag">&lt;/h1&gt;</span>&#x000A;    <span class="tag">&lt;/ion-header-bar&gt;</span>&#x000A;    <span class="tag">&lt;ion-header-bar</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bar-subheader bar-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;      <span class="tag">&lt;h1</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Subheader<span class="tag">&lt;/h1&gt;</span>&#x000A;    <span class="tag">&lt;/ion-header-bar&gt;</span>&#x000A;    <span class="tag">&lt;ion-content</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">padding</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;      <span class="tag">&lt;ion-list&gt;</span>&#x000A;        <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button button-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>button<span class="tag">&lt;/button&gt;</span>&#x000A;        <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button button-block button-outline button-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;          Outlined Button&#x000A;        <span class="tag">&lt;/button&gt;</span>&#x000A;        <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button button-block button-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Block Button<span class="tag">&lt;/button&gt;</span>&#x000A;        <span class="tag">&lt;button</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">button button-block button-clear  button-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Clear Button<span class="tag">&lt;/button&gt;</span>&#x000A;        <span class="tag">&lt;ion-item</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">item-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Item<span class="tag">&lt;/ion-item&gt;</span>&#x000A;        <span class="tag">&lt;ion-toggle</span> <span class="attribute-name">toggle-class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">toggle-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Toggle<span class="tag">&lt;/ion-toggle&gt;</span>&#x000A;        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">item range range-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;          <span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icon ion-ios7-sunny-outline</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span>&#x000A;          <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">range</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">volume</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">min</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">max</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">33</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;          <span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icon ion-ios7-sunny</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span>&#x000A;        <span class="tag">&lt;/div&gt;</span>&#x000A;        <span class="tag">&lt;a</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">item</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;          Badges&#x000A;          <span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">badge badge-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>0<span class="tag">&lt;/span&gt;</span>&#x000A;        <span class="tag">&lt;/a&gt;</span>&#x000A;      <span class="tag">&lt;/ion-list&gt;</span>&#x000A;    <span class="tag">&lt;/ion-content&gt;</span>&#x000A;    <span class="tag">&lt;ion-footer-bar</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bar-positive</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>&#x000A;      <span class="tag">&lt;h1</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Footer<span class="tag">&lt;/h1&gt;</span>&#x000A;    <span class="tag">&lt;/ion-footer-bar&gt;</span>&#x000A;  <span class="tag">&lt;/ion-pane&gt;</span></pre></div>
+              </div>
+              </div>
+              
+              <p>For this app, blue isn’t really the color I need, and neither are any of the other colors that came with Ionic. With plain CSS, you would have to dig through thousands of lines to isolate the colors you wanted to change and hope you got everything. But now, with Sass, we can simply change the <code>$positive</code> variable to the color we want. Doing this will update the background colors, borders, active colors, etc. For my app, I will change the color to teal.</p>
+              
+              <div><div class="CodeRay">
+                <div class="code"><pre>/*&#x000A;To customize the look and feel of Ionic, you can override the variables&#x000A;in Ionic's _variables.scss file.&#x000A;For example, you might change some of the default colors:&#x000A;$light:                           #fff !default;&#x000A;$stable:                          #f8f8f8 !default;&#x000A;$positive:                        #4a87ee !default;&#x000A;$calm:                            #43cee6 !default;&#x000A;$balanced:                        #66cc33 !default;&#x000A;$energized:                       #f0b840 !default;&#x000A;$assertive:                       #ef4e3a !default;&#x000A;$royal:                           #8a6de9 !default;&#x000A;$dark:                            #444 !default;&#x000A;*/&#x000A;&#x000A;// The path for our Ionicon font files, relative to the built CSS in www/css&#x000A;$ionicons-font-path: &quot;../lib/ionic/fonts&quot; !default;&#x000A;&#x000A;// My custom color. I’ll override the default for $positive.&#x000A;// Note that it’s before we load the rest of Ionic.&#x000A;// This is important!&#x000A;$positive:                        #057b6c !default;&#x000A;&#x000A;&#x000A;// Include all of Ionic.&#x000A;@import &quot;www/lib/ionic/scss/ionic&quot;;&#x000A;</pre></div>
+              </div>
+              </div>
+              
+              <p>Save the file, and the app will instantly be updated. With one simple change, the entire feel of the app has changed. Pretty powerful stuff, huh? So, let’s add a little bit more to this.</p>
+              
+              <h2 id="custom-scroll-background">Custom Scroll Background</h2>
+              
+              <p>Changing the background of the scroll-view can be a nice touch that enhances the look and feel of an app. To do this, we’ll change the background to an image, using a variable. The variable will be the location of the image. For this example, we can use a placeholder image:</p>
+              
+              <div><div class="CodeRay">
+                <div class="code"><pre>$big-bg:      'http://ioniconf.com/img/bg.jpg';</pre></div>
+              </div>
+              </div>
+              
+              <p>With this, we can create a class that uses the variable:</p>
+              
+              <div><div class="CodeRay">
+                <div class="code"><pre>.scroll-bg {&#x000A;  background: url($big-bg) no-repeat center center fixed;&#x000A;  background-size: cover;&#x000A;}</pre></div>
+              </div>
+              </div>
+              
+              <p>Then, we’ll add that class to <code>ion-content</code>:</p>
+              
+              <div><div class="CodeRay">
+                <div class="code"><pre><span class="tag">&lt;ion-content</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">padding scroll-bg</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>…<span class="tag">&lt;/ion-content&gt;</span></pre></div>
+              </div>
+              </div>
+              
+              <p>Now our <code>ion-content</code> has a great background image, and our content is teal.</p>
+              
+              <h2 id="parting-words">Parting Words</h2>
+              <p>While this example only scratches the surface of working with Sass, it’s obvious how powerful it is. A developer only has to touch a few lines of code to completely change the look and feel of an app. I’d highly suggest learning more Sass to speed up your CSS development.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+      <footer class='main'>
+        <span class='attribution'>&copy; 2014 Drifty Co.</span>
+        <span class='expand-wrapper'>
+          <span class='expand'></span>
+        </span>
+        <nav id='nav'>
+          <a href='http://ionicframework.com' target='_blank'>Ionic</a>
+          <a href='https://github.com/driftyco/ionic' target='_blank'>Github</a>
+          <a href='mailto:hi@ionicframework.com' target='_blank'>Contact us</a>
+          <a href='https://github.com/driftyco/ionic-learn/issues/new' target='_blank'>Suggestions</a>
+          <a href='http://ionicons.com/' target='_blank'>Ionicons</a>
+          <a href='http://ionicframework.com/jobs/' target='_blank'>Jobs</a>
+          <a href='http://forum.ionicframework.com/' target='_blank'>Forum</a>
+          <a href='http://ionicframework.com/blog/' target='_blank'>Blog</a>
+          <a href='http://drifty.com' target='_blank'>Drifty Co</a>
+        </nav>
+      </footer>
+    </div>
+    <div class='get-ionic-wrapper viewed'>
+      <a class='get-ionic' href='http://www.ionicframework.com' target='_new'>Get building with Ionic today!</a>
+      <a class='close-cta ion-ios7-close-empty' href='#'></a>
+    </div>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js'></script>
+    <script src='//scratch.ionicsdk.com/static/js/embed.js'></script>
+    <script src='/js/main.js'></script>
+  </body>
+</html>
